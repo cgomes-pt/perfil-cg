@@ -1,0 +1,170 @@
+<?xml version="1.0" ?>
+<materialLib name="Terrain_Library">
+	<textures>
+		<texture name="water" filename="textures/water_texture.png" mipmap=true/>
+		<texture name="grass" filename="textures/grass2.jpg" mipmap=true/>
+		<texture name="mountain" filename="textures/mountain.png" mipmap=true/>
+		<texture name="sand" filename="textures/sand.jpg" mipmap=true/>
+		<texture name="snow" filename="textures/snow.jpg" mipmap=true/>
+		<texture name="water_sand" filename="textures/water_sand.jpg" mipmap=true/>
+		<texture name="snow_mountain" filename="textures/snow_mountain.png" mipmap=true/>
+		<texture name="water_ice" filename="textures/water_ice.jpg" mipmap=true/>
+		<texture name="terrain_ice" filename="textures/terrain_ice.jpg" mipmap=true/>
+		<texture name="mars" filename="textures/mars.jpg" mipmap=true/>
+		<texture name="cracks" filename="textures/cracks.jpg" mipmap=true/>
+
+
+	</textures>
+	<shaders>
+		<shader name="terrainShaders" vs = "shaders/terrain.vert" ps = "shaders/terrain.frag" />
+	</shaders>
+	
+	<materials>
+		<material name="Terrain_Material">
+			<shader name="terrainShaders">
+				<values>
+					<valueof uniform="m_pvm" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+							 
+					<valueof uniform="m_normal" 
+							 type="RENDERER" context="CURRENT" 
+							 component="NORMAL" />
+
+					<valueof uniform="diffuse" 
+							 type="COLOR" context="CURRENT" 
+							 component="DIFFUSE" />
+
+					<valueof uniform="ambient"
+							 type="COLOR" context="CURRENT"
+							 component="AMBIENT" />
+							 
+					<valueof uniform="m_view" 
+							 type="RENDERER" context="CURRENT" 
+							 component="VIEW" />
+							 
+					<valueof uniform="l_dir" 
+							 type="LIGHT" context="Sun"
+							 component="DIRECTION" />
+					
+					<valueof uniform="m_viewModel" 
+							 type="RENDERER" context="CURRENT" 
+							 component="VIEW_MODEL" />
+
+					<valueof uniform="specular" 
+							 type="COLOR" context="CURRENT" 
+							 component="SPECULAR" />
+							 
+					<valueof uniform="shininess" 
+							 type="COLOR" context="CURRENT" 
+							 component="SHININESS" />
+
+					<valueof uniform="octaves" 
+							 type="RENDERER" context="CURRENT" 
+							 component="octaves" />
+
+
+
+					<valueof uniform="planet_mars" 
+							 type="RENDERER" context="CURRENT" 
+							 component="planet_mars" />
+
+					<valueof uniform="strength" 
+							 type="RENDERER" context="CURRENT" 
+							 component="strength" />
+
+					<valueof uniform="noise_x" 
+							 type="RENDERER" context="CURRENT" 
+							 component="noise_x" />
+
+					<valueof uniform="noise_y" 
+							 type="RENDERER" context="CURRENT" 
+							 component="noise_y" />
+					<valueof uniform="noise_z" 
+							 type="RENDERER" context="CURRENT" 
+							 component="noise_z" />
+					
+
+					<valueof uniform="gain" 
+							 type="RENDERER" context="CURRENT" 
+							 component="gain" />
+
+					<valueof uniform="base_frequency" 
+							 type="RENDERER" context="CURRENT" 
+							 component="base_frequency" />
+
+					<valueof uniform="lacunarity" 
+							 type="RENDERER" context="CURRENT" 
+							 component="lacunarity" />
+
+					<valueof uniform="minValue" 
+							 type="RENDERER" context="CURRENT" 
+							 component="minValue" />
+
+					<valueof uniform="water"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=0 />
+
+					<valueof uniform="grass"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=1 />
+
+					<valueof uniform="mountain"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=2 />
+
+					<valueof uniform="sand"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=3 />
+
+					<valueof uniform="snow"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=4 />
+
+					<valueof uniform="water_sand"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=5 />
+
+					<valueof uniform="snow_mountain"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=6 />
+
+					<valueof uniform="water_ice"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=7 />
+
+					<valueof uniform="terrain_ice"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=8 />
+
+					<valueof uniform="mars"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=9 />
+
+					<valueof uniform="cracks"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=10 />	
+
+				</values>
+			</shader>
+			<textures>
+				<texture name="water" UNIT = 0 />
+				<texture name="grass" UNIT = 1 />
+				<texture name="mountain" UNIT = 2 />
+				<texture name="sand" UNIT = 3 />
+				<texture name="snow" UNIT = 4 />
+				<texture name="water_sand" UNIT = 5 />
+				<texture name="snow_mountain" UNIT = 6 />
+				<texture name="water_ice" UNIT = 7 />
+				<texture name="terrain_ice" UNIT = 8 />
+				<texture name="mars" UNIT = 9 />
+				<texture name="cracks" UNIT = 10 />
+
+
+
+			</textures>
+
+		</material>
+	</materials>
+	
+</materialLib>

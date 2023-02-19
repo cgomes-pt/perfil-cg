@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<project name="Terrain_Generator" >
+	<assets>
+        <attributes>
+            <attribute type="RENDERER" name="lacunarity" data="FLOAT" value="2.000" />
+            <attribute type="RENDERER" name="base_frequency" data="FLOAT" value="1.000" />
+            <attribute type="RENDERER" name="gain" data="FLOAT" value="1.00" />
+            <attribute type="RENDERER" name="octaves" data="INT" value="1" />
+            <attribute type="RENDERER" name="minValue" data="FLOAT" value="0.00" />
+            <attribute type="RENDERER" name="strength" data="FLOAT" value="0.000" />
+            <attribute type="RENDERER" name="noise_x" data="FLOAT" value="0.00"/>
+            <attribute type="RENDERER" name="noise_y" data="FLOAT" value="0.00"/>
+            <attribute type="RENDERER" name="noise_z" data="FLOAT" value="0.00"/>
+            <attribute type="RENDERER" name="planet_mars" data="INT" value="0"/>
+			
+
+        </attributes>
+		
+    
+        <scenes>
+			<scene name="Terreno" param="UNITIZE SWAP_YZ">	
+                <SCALE x=3 y=3 z=3 />
+                    <geometry name = "Sphere" type = "SPHERE" SLICES=256 STACKS=256 material="terrain">
+                    </geometry>       
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="0" g="0" b="0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<POSITION x=-8.101 y=7.500 z=-6.899 />
+				<VIEW x=1 y=-1 z=1 />
+			</camera>
+		</cameras>
+
+		<lights>
+			<light name="Sun">
+				<DIRECTION x=-2 y=-2 z=-2 />
+			</light>
+		</lights>
+
+        <materialLibs>
+			<materialLib filename = "terrainGenerator.mlib"/>
+		</materialLibs> 
+
+
+	</assets>
+	
+	<pipelines>
+		<pipeline name="pipeline_1">
+			<pass class="default" name="PaSs_TeRrAiN">
+				<scenes>
+					<scene name="Terreno"/> 
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>      
+				<materialMaps>
+					<map fromMaterial="*" toLibrary="Terrain_Library" toMaterial="Terrain_Material" />
+				</materialMaps>
+
+ 
+			</pass>
+		</pipeline>
+	</pipelines>
+     <interface> 
+		<window label="Terrain - Noise Params"> 
+			<var label="lacunarity" type="RENDERER" context="CURRENT"
+				component="lacunarity" def="min=0.000 max=10 step=0.001"  />
+
+            <var label="base_frequency" type="RENDERER" context="CURRENT"
+				component="base_frequency" def="min=0.000 max=10 step=0.001"  /> 
+            
+            <var label="gain" type="RENDERER" context="CURRENT"
+				component="gain" def="min=0 max=10 step=0.01"  /> 
+
+            <var label="octaves" type="RENDERER" context="CURRENT"
+				component="octaves" def="min=0 max=16 step=1"  /> 
+            
+            <var label="minValue" type="RENDERER" context="CURRENT"
+				component="minValue" def="min=0.00 max=5 step=0.01"  /> 
+            
+            <var label="strength" type="RENDERER" context="CURRENT"
+				component="strength" def="min=0.00 max=5 step=0.001"  /> 
+            
+            <var label="noise_x" type="RENDERER" context="CURRENT"
+				component="noise_x" def="step=0.001"/>
+
+            <var label="noise_y" type="RENDERER" context="CURRENT"
+				component="noise_y" def="step=0.001"/>
+
+            <var label="noise_z" type="RENDERER" context="CURRENT"
+				component="noise_z" def="step=0.001"/>
+            
+
+
+		</window>
+
+		<window label="Settings">
+			<var label="MainViewport" type="VIEWPORT" context="CURRENT"
+				component="CLEAR_COLOR" def="vec4[(1.000000, 1.000000, 1.000000, 1.000000)] "/>
+
+			<var label="planet_mars" type="RENDERER" context="CURRENT"
+				component="planet_mars" def="min=0 max=10 step=1"/>
+		</window>
+
+
+	</interface>  
+
+
+</project>

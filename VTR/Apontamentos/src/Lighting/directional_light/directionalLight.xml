@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<project name="D+A+S Light Per Vertex" >
+	<assets><!-- width="512" height="512" -->
+	
+		<scenes>
+			<scene name="MyPlane" >
+				<TRANSLATE x = 0 y = -0.4 z = 0 />
+				<SCALE x = 2 y = 0 z = 2 />
+				<geometry name="plane" type ="SQUARE"/>
+			</scene>
+			<scene name="MySceneA" param="UNITIZE SWAP_YZ">
+				<TRANSLATE x = -1 y = 0 z = -1 />
+				<file name="Teapot.3ds"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<TYPE value="PERSPECTIVE"/>
+				<FOV value=60/>
+				<NEAR value= 0.001/>
+				<FAR value= 10/>
+                <POSITION x="-0.128581" y="2.6503" z="4.83387" w="1" />
+                <VIEW x="0.0599905" y="-0.514136" z="-0.855608" w="0" />
+ 			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun">
+				<DIRECTION x=-2 y=-1 z=-2 />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename="lighting.mlib" />
+		</materialLibs>
+	</assets>
+	
+	<pipelines>
+		<pipeline name="lighting" default="true">
+			<pass class="default" name="pass1">
+				<scenes>
+                    <scene name="MyPlane" />
+					<scene name="MySceneA" />
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="*">
+						<shader fromMaterial ="diffAmbSpecPerPixel" fromLibrary="Lighting" />
+					</map>
+				</injectionMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+	<interface>
+		<window label="Specular">
+			<var label="shininess" type="COLOR" context="lighting#pass1::Default"
+			     component="SHININESS" def="min=0.0 max=1000 " />
+		</window>	
+	</interface>	
+</project>
